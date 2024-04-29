@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Usuário</title>
+</head>
+<body>
+    <h1>Editar Usuário</h1>
+    <form id="formEdit" method="POST" action="/users/{{ user_id }}">
+        <label for="name">Nome:</label>
+        <input type="text" id="name" name="name" value="{{ user[1] }}" required>
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" value="{{ user[2] }}" required>
+        <label for="password">Nova Senha:</label>
+        <div>
+            <input type="password" id="password" name="password" value="{{ user[3] }}" required>
+            <button type="button" id="showPassword">Mostrar Senha</button>
+        </div>
+        <button type="submit">Salvar</button>
+    </form>
+</body>
+<script>
+    const passwordField = document.getElementById('password');
+    const showPasswordButton = document.getElementById('showPassword');
+
+    showPasswordButton.addEventListener('click', function() {
+        if (passwordField.type === 'password') {
+            passwordField.type = 'text';
+            showPasswordButton.textContent = 'Ocultar Senha';
+        } else {
+            passwordField.type = 'password';
+            showPasswordButton.textContent = 'Mostrar Senha';
+        }
+    });
+</script>
+</html>
